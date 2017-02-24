@@ -17,19 +17,20 @@ import {module_name}.Update exposing (update)
 import {module_name}.View exposing (view)
 
 initialModel : Model
-initialModel = {{ }}
+initialModel =
+    {{}}
 
 init : ( Model, Cmd Msg )
 init =
-  ( initialModel
-  , Cmd.none )
+  initialModel ! []
 
 main =
   Html.program
     {{ init = init
     , update = update
     , view = view
-    , subscriptions = \_ -> Sub.none }}
+    , subscriptions = \_ -> Sub.none
+    }}
 """.lstrip()
 
 messages_template = """
@@ -67,7 +68,7 @@ update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
   case msg of
     NoOp ->
-      (model, Cmd.none)
+      model ! []
 """.lstrip()
 
 view_template = """
